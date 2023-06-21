@@ -1,0 +1,24 @@
+<div class="hero-section{{#get "posts" limit="1" filter="featured:true+feature_image:-null" as |slider|}}{{^if slider}} no-slider{{/if}}{{/get}}{{>partial_mode}}">
+	<div class="hero-wrap">
+		<div class="hero-content global-padding">
+			<h1 class="hero-title{{#match @custom.hero_title_size_and_subscription_form_or_button "Medium"}} hero-title-medium{{else match @custom.hero_title_size_and_subscription_form_or_button "Small"}} global-title hero-title-small{{else match @custom.hero_title_size_and_subscription_form_or_button "Medium + Subscription form"}} hero-title-medium{{else match @custom.hero_title_size_and_subscription_form_or_button "Small + Subscription form"}} global-title hero-title-small{{else match @custom.hero_title_size_and_subscription_form_or_button "Medium + Subscription button"}} hero-title-medium{{else match @custom.hero_title_size_and_subscription_form_or_button "Small + Subscription button"}} global-title hero-title-small{{else}} hero-title-large{{/match}}">{{#if @custom.hero_title_text}}{{{@custom.hero_title_text}}}{{else}}{{{t "{start-bold}Hey, we’re {site-title}.{end-bold} See our thoughts, stories and ideas." start-bold="<span>" end-bold="</span>" site-title=@site.title}}}{{/if}}</h1>
+			{{#if @site.members_enabled}}
+			{{#match @custom.hero_title_size_and_subscription_form_or_button "Large + Subscription form"}}
+				{{>members/subscribe_form is_hero=true}}
+			{{else match @custom.hero_title_size_and_subscription_form_or_button "Medium + Subscription form"}}
+				{{>members/subscribe_form is_hero=true}}
+			{{else match @custom.hero_title_size_and_subscription_form_or_button "Small + Subscription form"}}
+				{{>members/subscribe_form is_hero=true}}
+			{{/match}}
+			{{/if}}
+			{{#match @custom.hero_title_size_and_subscription_form_or_button "Large + Subscription button"}}
+				{{>members/subscribe_button}}
+			{{else match @custom.hero_title_size_and_subscription_form_or_button "Medium + Subscription button"}}
+				{{>members/subscribe_button}}
+			{{else match @custom.hero_title_size_and_subscription_form_or_button "Small + Subscription button"}}
+				{{>members/subscribe_button}}
+			{{/match}}
+		</div>
+		{{>featured}}
+	</div>
+</div>

@@ -1,0 +1,7 @@
+{{#foreach posts limit="1"}}
+	{{#get "posts" limit="6" filter="tag:{{primary_tag.slug}}+id:-{{id}}+feature_image:-null" include="authors" as |special_posts|}}
+		{{#if special_posts}}
+			{{>related label=(t "{start-bold}Recommended{end-bold}" start-bold="<span>" end-bold="</span>")}}
+		{{/if}}
+	{{/get}}
+{{/foreach}}
